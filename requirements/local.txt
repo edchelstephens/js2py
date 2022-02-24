@@ -1,0 +1,4 @@
+-r ./base.txt
+-r ./debug.txt
+-r ./formatter.txt
+-r ./test.txt
