@@ -1,6 +1,6 @@
 pytest==7.0.1 # https://github.com/pytest-dev/pytest
 pytest-sugar==0.9.4 # https://github.com/Teemu/pytest-sugar
-
+pytest-django==4.5.2 # https://github.com/pytest-dev/pytest-django
 coverage==5.5   # https://github.com/nedbat/coveragepy
 factory-boy==3.2.0  # https://github.com/FactoryBoy/factory_boy
 
