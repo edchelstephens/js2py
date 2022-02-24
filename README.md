@@ -1,5 +1,5 @@
 # JS2PY
 
-## Javascript Object/JSON to Python Converter
+## Javascript Object to Python Converter
 
 ### Made with ❤️ by @edchelstephens
