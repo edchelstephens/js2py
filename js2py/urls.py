@@ -16,8 +16,10 @@ Including another URLconf
 
 from django.urls import path, re_path, include
 from django.views.generic import TemplateView
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path("conversions/", include("conversions.urls")),
     re_path(".*", TemplateView.as_view(template_name="ui/index.html")),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
