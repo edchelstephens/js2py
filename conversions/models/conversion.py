@@ -24,4 +24,4 @@ class Js2PyConversion(models.Model):
 
     def get_prettified_python_conversion(self) -> str:
         """Get prettified string representation of converted python object."""
-        return pprint.pformat(self.get_python_conversion())
+        return pprint.pformat(self.get_python_conversion(), indent=4)
