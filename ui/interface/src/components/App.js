@@ -34,7 +34,7 @@ const App = () => {
         value={input}
         onChange={handleInputChange}
         rows="40"
-        cols="100"
+        cols="75"
       ></textarea>
       <button onClick={handleConvertClick}>Convert</button>
       <textarea
@@ -43,7 +43,7 @@ const App = () => {
         type="text"
         value={output}
         rows="40"
-        cols="100"
+        cols="80"
       ></textarea>
     </div>
   );
