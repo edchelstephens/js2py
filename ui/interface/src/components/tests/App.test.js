@@ -7,8 +7,8 @@ describe("App", () => {
     mountedApp = shallow(<App />);
   });
   it("renders without crashing", () => {});
-  it("renders two text inputs", () => {
-    const textInputs = mountedApp.find('input[type="text"]');
+  it("renders two textareas", () => {
+    const textInputs = mountedApp.find("textarea");
     expect(textInputs.length).toBe(2);
   });
 

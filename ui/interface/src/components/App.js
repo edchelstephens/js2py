@@ -21,9 +21,21 @@ const App = () => {
 
   return (
     <div className="app">
-      <input type="text" value={input} onChange={handleInputChange}></input>
+      <textarea
+        type="text"
+        value={input}
+        onChange={handleInputChange}
+        rows="40"
+        cols="100"
+      ></textarea>
       <button onClick={handleConvertClick}>Convert</button>
-      <input type="text" value={output}></input>
+      <textarea
+        readOnly
+        type="text"
+        value={output}
+        rows="40"
+        cols="100"
+      ></textarea>
     </div>
   );
 };
