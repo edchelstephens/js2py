@@ -16,14 +16,24 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+from .local_settings import (
+    DJANGO_DEBUG,
+    DJANGO_SECRET_KEY,
+    DB_NAME,
+    DB_USER,
+    DB_PASSWORD,
+    DB_HOST,
+    DB_PORT,
+)
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-(^61z4jpmriz!7k*qws5mio0*&(n9*ozy^7n++-_@x4^ozyi&-"
+SECRET_KEY = DJANGO_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = DJANGO_DEBUG
 
 LOCAL_HOST = "127.0.0.1"
 GCP_ESN_DEV_UBUNTU_18 = "35.187.228.98"
@@ -77,7 +87,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "js2py.wsgi.application"
 
-from .local_settings import DB_NAME, DB_USER, DB_PASSWORD, DB_HOST, DB_PORT
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
