@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,5 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Js2Py - Javascript Object to Python Converter</title>
   </head>
-  <body></body>
+  <body>
+    <div id="root"></div>
+    <script defer src="{% static 'ui/js/bundle.js' %}"></script>
+  </body>
 </html>
