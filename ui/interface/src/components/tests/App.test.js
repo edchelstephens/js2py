@@ -2,7 +2,13 @@ import { shallow } from "enzyme";
 import App from "../App";
 
 describe("App", () => {
-  it("renders without crashing", () => {
-    let mountedApp = shallow(<App />);
+  let mountedApp;
+  beforeEach(() => {
+    mountedApp = shallow(<App />);
+  });
+  it("renders without crashing", () => {});
+  it("renders two text inputs", () => {
+    const textInputs = mountedApp.find('input[type="text"]');
+    expect(textInputs.length).toBe(2);
   });
 });
