@@ -1,4 +1,5 @@
 import json
+import pprint
 
 from django.test import TestCase
 
@@ -35,3 +36,11 @@ class Js2PyConversionModelTest(TestCase):
         expected = json.loads(self.input_data)
 
         assert self.conversion.get_python_conversion() == expected
+
+    def test_get_prettified_python_conversion(self) -> None:
+        """Test get_prettified_python_conversion successfully converts string javascript object to python object."""
+
+        data = json.loads(self.input_data)
+        expected = pprint.pformat(data)
+
+        assert self.conversion.get_prettified_python_conversion() == expected

@@ -1,4 +1,5 @@
 import json
+import pprint
 from typing import Any
 
 from django.db import models
@@ -20,3 +21,7 @@ class Js2PyConversion(models.Model):
     def get_python_conversion(self) -> Any:
         """Get python coversion of javascript object input data."""
         return json.loads(self.data)
+
+    def get_prettified_python_conversion(self) -> str:
+        """Get prettified string representation of converted python object."""
+        return pprint.pformat(self.get_python_conversion())
