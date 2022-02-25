@@ -133,3 +133,5 @@ dmypy.json
 
 # NPM
 nodemodules/*
+
+bundle.js.LICENSE.txt
