@@ -1,3 +1,6 @@
+import json
+from typing import Any
+
 from django.db import models
 
 
@@ -13,3 +16,7 @@ class Js2PyConversion(models.Model):
     def __repr__(self) -> str:
         """Object string representation."""
         return "Js2PyConversion(data={})".format(repr(self.data))
+
+    def get_python_conversion(self) -> Any:
+        """Get python coversion of javascript object input data."""
+        return json.loads(self.data)

@@ -1,3 +1,5 @@
+import json
+
 from django.test import TestCase
 
 from conversions.models import Js2PyConversion
@@ -26,3 +28,10 @@ class Js2PyConversionModelTest(TestCase):
 
         assert self.conversion.__repr__() == expected
         assert repr(self.conversion) == expected
+
+    def test_get_python_conversion(self) -> None:
+        """Test get_python_conversion successfully converts string javascript object to python object."""
+
+        expected = json.loads(self.input_data)
+
+        assert self.conversion.get_python_conversion() == expected
