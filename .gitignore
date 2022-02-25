@@ -137,3 +137,8 @@ nodemodules/*
 bundle.js.LICENSE.txt
 
 local_settings.py
+
+
+
+mediafiles/*
+staticfiles/*
