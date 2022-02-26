@@ -26,10 +26,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-
-      run: |
-          cd ui/interface/
-          npm ci
-          npm run build --if-present
-          npm test
-
+    - run: cd ui/interface && npm ci
+    - run: cd ui/interface && npm run build --if-present
+    - run: cd ui/interface && npm test
