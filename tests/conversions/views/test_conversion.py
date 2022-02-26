@@ -10,6 +10,8 @@ from conversions.views.conversion import ConversionAPIView
 class ConversionAPIViewTestCase(APITestCase):
     """ConversionAPIView test case."""
 
+    maxDiff = None
+
     def setUp(self) -> None:
         self.request_factory = APIRequestFactory()
         self.view = ConversionAPIView.as_view()
@@ -18,14 +20,14 @@ class ConversionAPIViewTestCase(APITestCase):
     def test_post_successfully_converts_js_object_to_python(self) -> None:
         """Post successfully converts js object to python."""
 
-        input_object = "1"
+        input_object = '{"id": 281,"code": null}'
         data = {"data": input_object}
         request = self.request_factory.post(self.url, data=data)
         response = self.view(request)
 
         raw_conversion = json.loads(input_object)
         expected_response_data = {
-            "data": data,
+            "input_data": data.get("data"),
             "raw_conversion": raw_conversion,
             "prettified_conversion": pprint.pformat(raw_conversion),
         }
