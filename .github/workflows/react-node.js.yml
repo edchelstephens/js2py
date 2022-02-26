@@ -9,9 +9,9 @@ on:
   pull_request:
     branches: [ main ]
 
-defaults:
- run:
-  working-directory: ui/interface
+# defaults:
+#  run:
+#   working-directory: ui/interface
 
 jobs:
   build:
