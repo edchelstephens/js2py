@@ -1,7 +1,8 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from conversions.serializers.conversion import Js2PyConversionSerializer
+from conversions.models.conversion import Js2PyConversion
+
 
 class ConversionAPIView(APIView):
     """Javascript to Python object conversion api view."""
@@ -12,20 +13,15 @@ class ConversionAPIView(APIView):
             data = request.data
             input_data = data.get("data")
 
-            serializer = Js2PyConversionSerializer(data=input_data)
+            conversion = Js2PyConversion(data=input_data)
+            conversion.save()
 
-            if serializer.is_valid():
-                conversion = serializer.save()
-
-                response = {
-                    "input_data": data.get("data"),
-                    "raw_conversion": conversion.get_python_conversion(),
-                    "prettified_conversion": conversion.get_prettified_python_conversion(),
-                }
-                return Response(response, status=200)
-
-            else:
-                raise ValueError(str(serializer.errors))
+            response = {
+                "input_data": data.get("data"),
+                "raw_conversion": conversion.get_python_conversion(),
+                "prettified_conversion": conversion.get_prettified_python_conversion(),
+            }
+            return Response(response, status=200)
 
         except Exception as exc:
             error_response = {
