@@ -11,15 +11,12 @@ on:
 
 defaults:
  run:
-  working-directory: ./ui/interface
+  working-directory: ui/interface
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-    defaults: 
-      run:
-        working-directory: ./ui/interface/
 
     strategy:
       matrix:
