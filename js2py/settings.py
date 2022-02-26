@@ -16,24 +16,52 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-from .local_settings import (
-    DJANGO_DEBUG,
-    DJANGO_SECRET_KEY,
-    DB_NAME,
-    DB_USER,
-    DB_PASSWORD,
-    DB_HOST,
-    DB_PORT,
-)
+try:
+    from .local_settings import (
+        DJANGO_DEBUG,
+        DJANGO_SECRET_KEY,
+        DB_NAME,
+        DB_USER,
+        DB_PASSWORD,
+        DB_HOST,
+        DB_PORT,
+    )
+
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = DJANGO_DEBUG
+
+    # SECURITY WARNING: keep the secret key used in production secret!
+    SECRET_KEY = DJANGO_SECRET_KEY
+
+    # Database
+    # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql_psycopg2",
+            "NAME": DB_NAME,
+            "USER": DB_USER,
+            "PASSWORD": DB_PASSWORD,
+            "HOST": DB_HOST,
+            "PORT": DB_PORT,
+        }
+    }
+except Exception:
+    import secrets
+
+    SECRET_KEY = secrets.token_hex()
+    DEBUG = False
+
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = DJANGO_SECRET_KEY
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = DJANGO_DEBUG
 
 LOCAL_HOST = "127.0.0.1"
 GCP_ESN_DEV_UBUNTU_18 = "35.187.228.98"
@@ -86,21 +114,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "js2py.wsgi.application"
-
-
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": DB_NAME,
-        "USER": DB_USER,
-        "PASSWORD": DB_PASSWORD,
-        "HOST": DB_HOST,
-        "PORT": DB_PORT,
-    }
-}
 
 
 # Password validation
