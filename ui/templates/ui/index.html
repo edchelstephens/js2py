@@ -1,4 +1,6 @@
 {% load static %}
+{% load custom_tags %}
+{% env_value as env%}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,6 +12,10 @@
   </head>
   <body>
     <div id="root"></div>
+    {% if env %}
+    <script type="text/javascript" src="http://127.0.0.1:8080/main.js"></script>
+    {% else %}
     <script type="text/javascript" src="{% static '/ui/js/bundle.js' %}"></script>
+    {% endif %}
   </body>
 </html>

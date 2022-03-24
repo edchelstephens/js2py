@@ -19,7 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "bundle-dev": "webpack build --config webpack.config.dev.js"
+    "hot": "webpack serve --config webpack.config.dev.js",
+    "bundle": "webpack build --config webpack.config.prod.js"
   },
   "engines": {
     "node": ">=8"
@@ -52,6 +53,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "html-webpack-plugin": "^5.5.0",
+    "nodemon": "^2.0.15",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.7.4"

@@ -36,7 +36,7 @@ const App = () => {
         rows="40"
         cols="75"
       ></textarea>
-      <button onClick={handleConvertClick}>Convert</button>
+      <button onClick={handleConvertClick}>Converts</button>
       <textarea
         readOnly
         style={{ color: hasError ? "red" : "green" }}

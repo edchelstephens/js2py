@@ -1,8 +1,12 @@
 const path = require("path");
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   entry: path.resolve(__dirname, "src/index.js"),
+  output: {
+    path: path.resolve(__dirname, "../static/ui/js"),
+    filename: "bundle.js",
+  },
   module: {
     rules: [
       {
@@ -14,10 +18,5 @@ module.exports = {
   },
   resolve: {
     extensions: ["*", ".js", ".jsx"],
-  },
-  devServer: {
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-    }
   }
 };
